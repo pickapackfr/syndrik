@@ -2,7 +2,7 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.llms.ollama import Ollama
 from llama_index.embeddings.ollama import OllamaEmbedding
 import streamlit as st
-from utils import convert_to_chat_messages
+from utils import convert_to_chat_messages, route_message
 
 
 # Settings control global defaults
@@ -59,22 +59,10 @@ for message in st.session_state.messages:
 # Generate a response if the last message is from the user
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
-        if any(
-            keyword.lower() in prompt.lower()
-            for keyword in [
-                "syndic",
-                "copropriété",
-                "charges",
-                "immeuble",
-                "résidents",
-                "assemblée",
-                "budget",
-                "travaux",
-                "entretien",
-                "alexandre",
-                "perez",
-            ]
-        ):
+        # Route le message avec l'agent de routage LlamaIndex
+        route = route_message(st.session_state.messages)
+
+        if route == "property":
             with st.spinner("Recherche dans les données du syndic..."):
                 response_stream = st.session_state.chat_engine.stream_chat(prompt)
                 st.write_stream(response_stream.response_gen)
