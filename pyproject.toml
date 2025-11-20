@@ -1,5 +1,5 @@
 [project]
-name = "syndric"
+name = "syndrik"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -12,11 +12,12 @@ dependencies = [
     "nltk>=3.9.2",
     "numpy>=2.3.4",
     "ollama>=0.6.0",
-    "openai==2.7.1",
     "pandas>=2.3.3",
+    "playwright>=1.56.0",
     "pyarrow>=22.0.0",
     "pypdf>=5.9.0",
     "pytest>=8.4.2",
+    "pytest-playwright>=0.7.1",
     "python-dotenv>=1.0.0",
     "sounddevice>=0.5.3",
     "streamlit>=1.50.0",

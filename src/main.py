@@ -8,25 +8,25 @@ from utils import convert_to_chat_messages, route_message
 # Settings control global defaults
 Settings.embed_model = OllamaEmbedding(model_name="qwen3-embedding:0.6b")
 Settings.llm = Ollama(
-    model="qwen3:latest",
+    model="qwen3:4b",
     request_timeout=60.0,
     context_window=4000,
 )
 
-st.header("Syndric v0.1-turbo 🏢🤖")
+st.header("Syndrik v0.1-turbo 🏢🤖")
 
 # Initialize the first message
 if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "system",
-            "content": """Tu es un assistant IA destiné au syndic de copropriété appellé Syndric. 
+            "content": """Tu es un assistant IA destiné au syndic de copropriété appellé Syndrik. 
             Tu aides les utilisateurs en répondant à leurs questions de manière sympathique et empathique. 
             Tu dois toujours répondre en français. La monnaie utilisée est l'euro (€).""",
         },
         {
             "role": "assistant",
-            "content": """Bonjour, je suis Syndric, votre assistant d'IA sympathique ! Comment puis-je vous aider aujourd'hui ?""",
+            "content": """Bonjour, je suis Syndrik, votre assistant d'IA sympathique ! Comment puis-je vous aider aujourd'hui ?""",
         },
     ]
 
@@ -60,7 +60,7 @@ for message in st.session_state.messages:
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         # Route le message avec l'agent de routage LlamaIndex
-        with st.spinner("Je réfléchis..."):
+        with st.spinner("Classification de la question..."):
             route = route_message(st.session_state.messages)
 
         if route == "property":

@@ -1,6 +1,7 @@
 from llama_index.core.llms import ChatMessage, MessageRole
 from llama_index.core import Settings
 from typing import Literal
+from llama_index.llms.ollama import Ollama
 
 
 def convert_to_chat_messages(messages):
@@ -31,6 +32,13 @@ def route_message(messages: list[dict]) -> Literal["property", "general"]:
     Returns:
         "property" ou "general" selon la classification
     """
+    # Utilisation d'un modèle LLM pour la classification
+    small_llm = Ollama(
+        model="qwen3:0.6b",
+        request_timeout=30.0,
+        context_window=1000,
+    )
+
     # Extraire la dernière question de l'utilisateur
     last_user_message = ""
     for msg in reversed(messages):
@@ -53,7 +61,7 @@ def route_message(messages: list[dict]) -> Literal["property", "general"]:
 
     try:
         # Appeler le LLM pour classification (non-streaming)
-        response = Settings.llm.complete(routing_prompt)
+        response = small_llm.complete(routing_prompt)
 
         # Normaliser la réponse
         return response.text

@@ -1,10 +1,10 @@
-# Syndric IA
+# Syndrik IA
 
 A friendly and empathetic AI assistant chatbot built with Streamlit, LlamaIndex, and Ollama.
 
 ## Overview
 
-Syndric is an AI-powered chat application that allows users to interact with a local language model. It processes documents from a local directory, builds a vector index for semantic search, and responds to user queries in French using a conversational interface.
+Syndrik is an AI-powered chat application that allows users to interact with a local language model. It processes documents from a local directory, builds a vector index for semantic search, and responds to user queries in French using a conversational interface.
 
 **Key Features:**
 
@@ -131,7 +131,8 @@ syndric/
 │       └── minio.py            # MinIO storage integration (optional)
 ├── tests/
 │   ├── __init__.py
-│   └── test_main.py            # Unit tests
+│   └── externals/
+│       └── test_minio.py       # Integration tests
 ├── data/                       # Place your documents here
 ├── pyproject.toml              # Project dependencies
 └── README.md                   # This file
@@ -142,7 +143,7 @@ syndric/
 Edit `src/main.py` to customize:
 
 - **Embedding Model**: Change `model_name` in `OllamaEmbedding(model_name="qwen3-embedding:0.6b")`
-- **LLM Model**: Change `model="qwen3:0.6b"` in the `Ollama()` constructor
+- **LLM Model**: Change `model="qwen3:latest"` in the `Ollama()` constructor
 - **Context Window**: Adjust `context_window=4000` (in tokens)
 - **System Prompt**: Modify the `system_prompt` parameter (currently in French)
 - **Data Directory**: Change `input_dir="./data"` in `SimpleDirectoryReader()`
