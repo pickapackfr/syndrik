@@ -17,7 +17,7 @@ Syndric is an AI-powered chat application that allows users to interact with a l
 
 ## Architecture
 
-- **LLM**: Ollama with `qwen3:0.6b` model
+- **LLM**: Ollama with `qwen3:latest` model
 - **Embedding Model**: Ollama `qwen3-embedding:0.6b`
 - **Framework**: Streamlit (web UI)
 - **Search**: LlamaIndex with vector index
