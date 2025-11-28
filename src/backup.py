@@ -1,4 +1,5 @@
 from minio import Minio
+from minio.error import S3Error
 from openai import OpenAI
 import os
 
@@ -68,10 +69,10 @@ try:
 
             response.close()
             response.release_conn()
-        except Exception as e:
+        except (S3Error, OSError) as e:
             print(f"Error reading file {obj.object_name}: {e}")
 
         print("-" * 50)
 
-except Exception as e:
+except S3Error as e:
     print(f"Error accessing bucket '{bucket_name}': {e}")
