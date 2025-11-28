@@ -65,7 +65,7 @@ try:
                 )  # Remove or comment this line to process all files
 
             except UnicodeDecodeError:
-                print(f"Binary file (cannot display as text)")
+                print("Binary file (cannot display as text)")
 
             response.close()
             response.release_conn()
