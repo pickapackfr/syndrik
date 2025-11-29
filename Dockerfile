@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get --no-install-recommends install  -y \
     build-essential \
     curl \
     git \
@@ -39,7 +39,7 @@ ENV PYTHONUNBUFFERED=1 \
     STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 # Install system dependencies for production and create non-root user
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get --no-install-recommends install -y \
     curl \
     wget \
     && rm -rf /var/lib/apt/lists/* \
