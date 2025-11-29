@@ -116,7 +116,7 @@ Example questions:
 ## Project Structure
 
 ```
-syndrik2/
+root/
 ├── .devcontainer/              # Development container configuration
 ├── .github/                    # GitHub workflows and templates
 ├── .vscode/                    # VS Code settings
