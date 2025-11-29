@@ -289,10 +289,8 @@ jobs:
         
         import pandas as pd
         print('✅ Pandas import successful')
-        
         import numpy as np
         print('✅ Numpy import successful')
-        
         try:
             from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
             from llama_index.llms.ollama import Ollama
