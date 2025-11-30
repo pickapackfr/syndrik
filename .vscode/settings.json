@@ -1,5 +1,9 @@
 {
   "python.testing.pytestArgs": ["."],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "sonarlint.connectedMode.project": {
+    "connectionId": "Syndrik_SonarQube",
+    "projectKey": "pickapackfr_syndrik"
+  }
 }
